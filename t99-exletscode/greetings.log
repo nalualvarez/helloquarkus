@@ -1,0 +1,12 @@
+2022-08-30 16:56:38,419 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] INFO  [io.quarkus] (Quarkus Main Thread) t99-exletscode 0.1.0-SNAPSHOT on JVM (powered by Quarkus 2.7.5.Final-redhat-00011) started in 0.483s. Listening on: http://localhost:8080
+2022-08-30 16:56:38,425 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2022-08-30 16:56:38,427 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, jaeger, micrometer, quarkus-monitor, rest-client, resteasy, resteasy-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, smallrye-opentracing, swagger-ui, vertx]
+2022-08-30 16:56:38,430 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-0) Live reload total time: 0.955s 
+2022-08-30 16:57:07,541 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] WARNING [org.aes.rea.ter.imp.AbstractWindowsTerminal] (Shutdown thread) Failed to write out.
+2022-08-30 16:57:07,540 bbtmf-7nt00l3 t99-exletscode-dev.jar[21980] INFO  [io.quarkus] (Shutdown thread) t99-exletscode stopped in 0.043s
+2022-08-30 16:57:58,783 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.quarkus] (Quarkus Main Thread) t99-exletscode 0.1.0-SNAPSHOT on JVM (powered by Quarkus 2.7.5.Final-redhat-00011) started in 7.213s. Listening on: http://localhost:8080
+2022-08-30 16:57:58,803 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2022-08-30 16:57:58,807 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cdi, jaeger, micrometer, quarkus-monitor, rest-client, resteasy, resteasy-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, smallrye-opentracing, swagger-ui, vertx]
+2022-08-30 16:59:23,100 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-0) File change detected: C:\Users\F0720278\exletscode\t99-exletscode\src\main\resources\application.properties
+2022-08-30 16:59:23,111 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-0) Restarting quarkus due to changes in application.properties.
+2022-08-30 16:59:23,173 bbtmf-7nt00l3 t99-exletscode-dev.jar[18128] INFO  [io.quarkus] (Quarkus Main Thread) t99-exletscode stopped in 0.058s

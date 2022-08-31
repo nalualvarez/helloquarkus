@@ -1,0 +1,64 @@
+version: "3.4"
+services:
+  t99-exletscode:
+    container_name: t99-exletscode
+    image: t99-exletscode:latest
+    build:
+      context: ../
+      dockerfile: ./Dockerfile
+    environment:
+      # Opção para jmx debug
+      - JAVA_JMX_DEBUG=-Djava.rmi.server.hostname=0.0.0.0 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.rmi.port=8999 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false
+      # Configuracao do LOG
+      - QUARKUS_LOG_CONSOLE_ENABLE=true
+      - QUARKUS_LOG_CONSOLE_LEVEL=DEBUG
+      # Caso queira usar banco de dados futuramente descomente as linhas abaixo que comecam com -
+      # Exibir no log as queries executadas nao utilize no ambiente de produção
+      #- QUARKUS_HIBERNATE_ORM_LOG_SQL=true
+      # Roteiro: https://fontes.intranet.bb.com.br/dev/publico/roteiros/-/blob/master/db2/UsandoDb2EmProjetoJavaQuarkus.md
+      # Essas configurações são obtidas pelo arquivo .env ou na execução do script qdo usuario pessoal for informado
+      #- QUARKUS_DATASOURCE_JDBC_URL=${QUARKUS_DATASOURCE_JDBC_URL}
+      #- QUARKUS_DATASOURCE_USERNAME=${DB_USER_PES:-${QUARKUS_DATASOURCE_USERNAME}}
+      #- QUARKUS_DATASOURCE_PASSWORD=${DB_PASSWORD_PES:-${QUARKUS_DATASOURCE_USERNAME}}
+      # OPENTRACING - JAEGER
+      - QUARKUS_JAEGER_SERVICE_NAME=t99-exletscode
+      - QUARKUS_JAEGER_SAMPLER_TYPE=const
+      - QUARKUS_JAEGER_SAMPLER_PARAM=1
+      - QUARKUS_JAEGER_AGENT_HOST_PORT=localhost
+    network_mode: host
+    ports:
+      - "8080:8080" # Server
+      - "5005:5005" # DEBUG Não uilizar nos ambientes de producao/homologacao
+      - "8999:8999" # DEBUG JMX Não utilizar nos ambientes de producao/homologacao
+  # =============================================================================
+  #   Sidecar CURIO Utilizado para realizar a comunicação entre IIB e aplicação
+  # =============================================================================
+  # Caso queria utlizar o curio descomente as linhas abaixo (atencao para identacao)
+  # e crie um arquivo no .env_curio na raiz do projeto e informe as environments.
+  #iib-curio:
+  #  container_name: iib-curio
+  #  image: atf.intranet.bb.com.br:5001/bb/iib/iib-curio:0.6.5
+  #  # as enviroments estarão presentes no arquivo .env_curio na raiz do projeto, voce deve alterar la as configuracoes
+  #  env_file:
+  #    - .././.env_curio
+  #  # se windows, alterar abaixo as portas 8081 e também na variável KUMULUZEE_SERVER_HTTP_PORT para 8090 por exemplo
+  #  # pois a porta 8081 no windows pode já estar ocupada por outros serviços
+  #  ports:
+  #    - "8081:8081"
+  #  network_mode: host
+  # =====================================================================================
+  #   Imagens para executar localmente, elas ja estarão disponiveis para seu namespace
+  # =====================================================================================
+  jaeger:
+    image: jaegertracing/all-in-one
+    environment:
+      - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    network_mode: host
